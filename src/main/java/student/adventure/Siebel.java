@@ -13,7 +13,6 @@ public class Siebel {
     private String endingRoom;
     private Room[] rooms;
 
-
     public void setEndingRoom(String endingRoom) {
         this.endingRoom = endingRoom;
     }
@@ -48,7 +47,8 @@ public class Siebel {
         while(true) {
             System.out.println(character);
             String command = scanner.nextLine();
-            if (command.trim().equalsIgnoreCase("quit") || command.trim().equalsIgnoreCase("exit")) {
+            if (command.trim().equalsIgnoreCase("quit") ||
+                    command.trim().equalsIgnoreCase("exit")) {
                 return;
             } else if (command.startsWith("go")) {
                 if (character.goSomewhere(command)) {

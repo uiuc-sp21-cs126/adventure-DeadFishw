@@ -42,7 +42,8 @@ public class Character {
 
     @Override
     public String toString() {
-        String toString = currentRoom.getDescriptions() + "\nFrom here, you can go: ";
+        String toString = currentRoom.getDescriptions() +
+                "\nFrom here, you can go: ";
         for (Direction direction: currentRoom.getDirections()) {
             toString += direction.getDirectionName() + " ";
         }
@@ -56,7 +57,6 @@ public class Character {
         return toString;
     }
 
-
     /**
      * Taking the items in the room
      *
@@ -68,7 +68,9 @@ public class Character {
             items.add(item.trim().toLowerCase());
             currentRoom.removeItems(item);
         } else {
-            System.out.println("There is no \"" + item.trim() + "\" in the room.");
+            System.out.println("There is no \"" +
+                    item.trim() +
+                    "\" in the room.");
         }
     }
 
@@ -85,7 +87,8 @@ public class Character {
                 currentRoom.addItem(item);
             }
         } else {
-            System.out.println("You don't have \"" + item.trim() + "\"!");
+            System.out.println("You don't have \"" +
+                    item.trim() + "\"!");
         }
     }
 
@@ -97,7 +100,8 @@ public class Character {
      */
     public boolean goSomewhere(@NotNull String command) {
         String directionToGo = command.substring(3);
-        if (directionToGo.trim().equalsIgnoreCase("log in to zoom") && currentRoom.getName().equalsIgnoreCase("Your room")) {
+        if (directionToGo.trim().equalsIgnoreCase("log in to zoom") &&
+                currentRoom.getName().equalsIgnoreCase("Your room")) {
             System.out.println("Congratulations! You Win! Enjoy your code review!");
             return true;
         }
@@ -113,7 +117,9 @@ public class Character {
             }
         }
 
-        System.out.println("I can't go \"" + directionToGo.trim().toLowerCase() + "\"!");
+        System.out.println("I can't go \"" +
+                directionToGo.trim().toLowerCase() +
+                "\"!");
         return false;
     }
 }
