@@ -1,5 +1,8 @@
 package student.adventure;
 
+/**
+ * Directions indication which direction and the destination of that direction.
+ */
 public class Direction {
     private String directionName;
     //Room to be in if heading to that direction.

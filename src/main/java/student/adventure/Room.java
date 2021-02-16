@@ -5,15 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The Rooms in the map.
+ */
 public class Room {
     private String name;
     private String description;
     private Direction[] directions;
     private List<String> items;
 
-    public Room(){
-
-    }
+    public Room(){}
 
     public Room(String setName) {
         name = setName;
