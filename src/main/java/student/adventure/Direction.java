@@ -28,4 +28,8 @@ public class Direction {
         this.directionName = directionName;
     }
 
+    @Override
+    public String toString() {
+        return directionName;
+    }
 }

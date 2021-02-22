@@ -13,6 +13,7 @@ public class Layout {
     private String endingRoom;
     private Room[] rooms;
 
+
     public void setEndingRoom(String endingRoom) {
         this.endingRoom = endingRoom;
     }

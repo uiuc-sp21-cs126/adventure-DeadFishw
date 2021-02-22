@@ -1,9 +1,6 @@
 package student.adventure;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * The Rooms in the map.
@@ -12,7 +9,12 @@ public class Room {
     private String name;
     private String description;
     private Direction[] directions;
-    private List<String> items;
+    private List<Item> items;
+    private Map<String, List<String>> commandOptions;
+
+    public Map<String, List<String>> getCommandOptions() {
+        return commandOptions;
+    }
 
     public Room(){}
 
@@ -44,13 +46,19 @@ public class Room {
         return name.equals(room.name);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
+    public List<Item> getItems() {
+        return items;
     }
 
-    public List<String> getItems() {
-        return items;
+    public List<String> getItemsString() {
+        if (items == null || items.size() == 0) {
+            return new ArrayList<>();
+        }
+        List<String> itemStrings = new ArrayList<String>();
+        for (Item item: items) {
+            itemStrings.add(item.getItemName());
+        }
+        return itemStrings;
     }
 
     public void setItems(String[] items) {
@@ -61,8 +69,8 @@ public class Room {
         items.remove(item.trim().toLowerCase());
     }
 
-    public void addItem(String item) {
-        items.add(item.trim().toLowerCase());
+    public void addItem(Item item) {
+        items.add(item);
     }
 
     public void setDescription(String descriptions) {
@@ -75,5 +83,16 @@ public class Room {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<String> getDirectionStrings() {
+        List<String> result = new ArrayList<String>();
+        if (directions == null || directions.length == 0) {
+            return result;
+        }
+        for(Direction direction: directions) {
+            result.add(direction.toString());
+        }
+        return result;
     }
 }
