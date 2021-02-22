@@ -87,10 +87,10 @@ public class AdventureGame {
         }
         for (Direction direction: character.getCurrentRoom().getDirections()) {
             if (command.trim().equalsIgnoreCase(direction.getDirectionName())) {
-                for (Region region : map.getRooms()) {
-                    if (direction.getRoom().equalsIgnoreCase(region.getName())) {
-                        if (character.getLevelOfForce() >= region.getLevelOfDanger()) {
-                            character.setCurrentRoom(region);
+                for (room room : map.getRooms()) {
+                    if (direction.getRoom().equalsIgnoreCase(room.getName())) {
+                        if (character.getLevelOfForce() >= room.getLevelOfDanger()) {
+                            character.setCurrentRoom(room);
                             return false;
                         } else {
                             status = MessagePrinter.printLevelTooLow(status, command);

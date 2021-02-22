@@ -4,14 +4,14 @@ import java.util.*;
 
 
 public class Character {
-    private Region currentRegion;
+    private room currentRoom;
     private Layout layout;
     private List<Item> items;
     private int levelOfForce;
 
     public Character(Layout setLayout) {
         layout = setLayout;
-        currentRegion = setLayout.getRooms()[0];
+        currentRoom = setLayout.getRooms()[0];
         items = new ArrayList<>();
     }
 
@@ -38,12 +38,12 @@ public class Character {
         return layout;
     }
 
-    public Region getCurrentRoom() {
-        return currentRegion;
+    public room getCurrentRoom() {
+        return currentRoom;
     }
 
-    public void setCurrentRoom(Region currentRegion) {
-        this.currentRegion = currentRegion;
+    public void setCurrentRoom(room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 
     public void setLayout(Layout layout) {
@@ -63,14 +63,14 @@ public class Character {
 
     @Override
     public String toString() {
-        String toString = currentRegion.getDescriptions() +
+        String toString = currentRoom.getDescriptions() +
                 "\nFrom here, you can go: ";
-        for (Direction direction: currentRegion.getDirections()) {
+        for (Direction direction: currentRoom.getDirections()) {
             toString += direction.getDirectionName() + " ";
         }
-        if (currentRegion.getItems().size() != 0) {
+        if (currentRoom.getItems().size() != 0) {
             toString += "\nItems visible: ";
-            for (Item item: currentRegion.getItems()) {
+            for (Item item: currentRoom.getItems()) {
                 toString += item.toString() + ", ";
             }
             toString = toString.substring(0, toString.length() - 2);
@@ -81,8 +81,8 @@ public class Character {
     public Map<String, List<String>> getCommandOptions() {
         Map<String, List<String>> commandOptions =  new HashMap<>();
         commandOptions.put("examine", new ArrayList<>());
-        commandOptions.put("go", currentRegion.getDirectionStrings());
-        commandOptions.put("take", currentRegion.getItemsString());
+        commandOptions.put("go", currentRoom.getDirectionStrings());
+        commandOptions.put("take", currentRoom.getItemsString());
         commandOptions.put("drop", this.getItemsString());
         List<String> toAdd = new ArrayList<String>();
         return commandOptions;

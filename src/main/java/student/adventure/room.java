@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * The Rooms in the map.
  */
-public class Region {
+public class room {
     private String name;
     private String description;
     private Direction[] directions;
@@ -17,9 +17,9 @@ public class Region {
         return commandOptions;
     }
 
-    public Region(){}
+    public room(){}
 
-    public Region(String setName) {
+    public room(String setName) {
         name = setName;
     }
 
@@ -47,8 +47,8 @@ public class Region {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Region region = (Region) o;
-        return name.equals(region.name);
+        room room = (room) o;
+        return name.equals(room.name);
     }
 
     public List<Item> getItems() {
