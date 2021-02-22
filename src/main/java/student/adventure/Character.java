@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Character {
     private Room currentRoom;
-    private Siebel siebel;
+    private Layout layout;
     private List<String> items;
 
-    public Character(Room startingRoom, Siebel setSiebel) {
-        siebel = setSiebel;
+    public Character(Room startingRoom, Layout setLayout) {
+        layout = setLayout;
         currentRoom = startingRoom;
         items = new ArrayList<>();
     }
@@ -24,8 +24,8 @@ public class Character {
         return items;
     }
 
-    public Siebel getSiebel() {
-        return siebel;
+    public Layout getSiebel() {
+        return layout;
     }
 
     public Room getCurrentRoom() {
@@ -36,8 +36,8 @@ public class Character {
         this.currentRoom = currentRoom;
     }
 
-    public void setSiebel(Siebel siebel) {
-        this.siebel = siebel;
+    public void setSiebel(Layout layout) {
+        this.layout = layout;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Character {
         }
         for (Direction direction: currentRoom.getDirections()) {
             if (directionToGo.trim().equalsIgnoreCase(direction.getDirectionName())) {
-                for (Room room: siebel.getRooms()) {
+                for (Room room: layout.getRooms()) {
                     if (direction.getRoom().equalsIgnoreCase(room.getName())) {
                         currentRoom = room;
                         return false;
