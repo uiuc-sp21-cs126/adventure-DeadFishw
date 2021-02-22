@@ -4,18 +4,18 @@ import java.util.Objects;
 
 public class Item {
     private String itemName;
-    private int itemID;
+    private int levelOfForce;
 
-    public int getItemID() {
-        return itemID;
+    public int getLevelOfForce() {
+        return levelOfForce;
     }
 
     public String getItemName() {
         return itemName;
     }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
+    public void levelOfForce(int levelOfForce) {
+        this.levelOfForce = levelOfForce;
     }
 
     public void setItemName(String itemName) {

@@ -3,7 +3,7 @@ package student.adventure;
 import student.server.GameStatus;
 
 public class MessagePrinter {
-    public static GameStatus printCannotGo(GameStatus status, String direction) {
+    public static GameStatus printNoDirection(GameStatus status, String direction) {
         return new GameStatus(true, status.getId(), "I can't go \"" +
                 direction.trim().toLowerCase() +
                 "\"!", null,null, status.getState(), status.getCommandOptions());
@@ -21,6 +21,18 @@ public class MessagePrinter {
 
     public static GameStatus printCannotDrop(GameStatus status, String item) {
         return new GameStatus(true, status.getId(),  "You don't have \"" + item.trim() + "\"!",
+                status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
+    }
+
+    public static GameStatus printDoNotUnderstand(GameStatus status, String command) {
+        return new GameStatus(true, status.getId(),  "I don't understand \"" + command.trim() + "\"!",
+                status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
+    }
+
+    public static GameStatus printLevelTooLow(GameStatus status, String direction) {
+        return new GameStatus(true, status.getId(),  "I can't go \"" +
+                direction.trim().toLowerCase() +
+                "\"! Your level of force is too low! DANGER!",
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 }

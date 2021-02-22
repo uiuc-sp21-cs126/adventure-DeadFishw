@@ -5,25 +5,30 @@ import java.util.*;
 /**
  * The Rooms in the map.
  */
-public class Room {
+public class Region {
     private String name;
     private String description;
     private Direction[] directions;
     private List<Item> items;
     private Map<String, List<String>> commandOptions;
+    private int levelOfDanger;
 
     public Map<String, List<String>> getCommandOptions() {
         return commandOptions;
     }
 
-    public Room(){}
+    public Region(){}
 
-    public Room(String setName) {
+    public Region(String setName) {
         name = setName;
     }
 
     public Direction[] getDirections() {
         return directions;
+    }
+
+    public int getLevelOfDanger() {
+        return levelOfDanger;
     }
 
     public String getDescriptions() {
@@ -42,8 +47,8 @@ public class Room {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Room room = (Room) o;
-        return name.equals(room.name);
+        Region region = (Region) o;
+        return name.equals(region.name);
     }
 
     public List<Item> getItems() {
@@ -67,6 +72,14 @@ public class Room {
 
     public void removeItems(String item) {
         items.remove(item.trim().toLowerCase());
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void setLevelOfDanger(int levelOfDanger) {
+        this.levelOfDanger = levelOfDanger;
     }
 
     public void addItem(Item item) {

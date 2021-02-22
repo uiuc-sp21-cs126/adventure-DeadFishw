@@ -82,27 +82,36 @@ public class AdventureGame {
      */
     public boolean goSomewhere(@NotNull String command) {
         if (checkWin(command)) {
+            status = MessagePrinter.printWinMessage(status);
             return true;
         }
         for (Direction direction: character.getCurrentRoom().getDirections()) {
             if (command.trim().equalsIgnoreCase(direction.getDirectionName())) {
-                for (Room room: map.getRooms()) {
-                    if (direction.getRoom().equalsIgnoreCase(room.getName())) {
-                        character.setCurrentRoom(room);
-                        return false;
+                for (Region region : map.getRooms()) {
+                    if (direction.getRoom().equalsIgnoreCase(region.getName())) {
+                        if (character.getLevelOfForce() >= region.getLevelOfDanger()) {
+                            character.setCurrentRoom(region);
+                            return false;
+                        } else {
+                            status = MessagePrinter.printLevelTooLow(status, command);
+                        }
                     }
                 }
                 return false;
             }
         }
 
-        MessagePrinter.printCannotGo(status, command);
+        MessagePrinter.printNoDirection(status, command);
         return false;
     }
     
     public boolean checkWin(String command) {
         return command.trim().equalsIgnoreCase("log in to zoom") &&
                 character.getCurrentRoom().getName().equalsIgnoreCase("Your room");
+    }
+
+    public void sayDoNotUnderstand(String command) {
+        status = MessagePrinter.printDoNotUnderstand(status, command);
     }
 
 }

@@ -107,7 +107,7 @@ public class GameEngine implements AdventureService {
         } else if (command.getCommandName().trim().equalsIgnoreCase("drop")) {
             game.drop(command.getCommandValue());
         } else {
-            System.out.println("I don't understand " + command);
+            game.sayDoNotUnderstand(command.getCommandName() + " " + command.getCommandValue());
         }
     }
 
