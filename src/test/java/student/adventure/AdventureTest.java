@@ -9,22 +9,24 @@ import java.io.*;
 import java.util.Scanner;
 
 import static org.junit.Assert.*;
-import static student.adventure.Siebel.runGame;
+import static student.adventure.GameEngine.runGame;
+
 
 
 public class AdventureTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     Character character;
-    Siebel adventure;
+    Layout adventure;
     ObjectMapper mapper;
+    GameEngine gameEngine;
     @Before
     public void setUp() throws IOException {
         System.setOut(new PrintStream(outputStreamCaptor));
         // This is run before every test.
         File file = new File("src/main/resources/siebel.json");
         mapper = new ObjectMapper();
-        adventure = mapper.readValue(file, Siebel.class);
+        gameEngine = new GameEngine(file);
         character = new Character(adventure.getRooms()[0], adventure);
     }
 
