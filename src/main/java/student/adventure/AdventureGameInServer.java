@@ -47,13 +47,15 @@ public class AdventureGameInServer {
         }
         for (Item item: character.getCurrentRoom().getItems()) {
             if (item.getItemName().equalsIgnoreCase(command.trim())) {
-                if (character.getLoad() - item.getLoad() < 0) {
-                    MessagePrinter.printTooMuchLoad(status,command);
+                if (character.getCurrentLoad() + item.getLoad() > character.getMaximumLoad()) {
+                    System.out.println("1");
+                    status = MessagePrinter.printTooMuchLoad(status,command);
+                    return;
                 }
                 character.getItems().add(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() + item.getWorth());
                 character.getCurrentRoom().getItems().remove(item);
-                status = new GameStatus(false, status.getId(), character.toString(), "", "https://www.bilibili.com/video/BV1Vo4y1R7dM", new AdventureState(), character.getCommandOptions());
+                status = new GameStatus(false, status.getId(), character.toString(), status.getImageUrl(), status.getVideoUrl(), new AdventureState(character.getLevelOfForce(), character.getTotalWorthOfItem()), character.getCommandOptions());
                 return;
             }
         }
@@ -79,7 +81,7 @@ public class AdventureGameInServer {
                 character.getItems().remove(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() - item.getWorth());
                 character.getCurrentRoom().getItems().add(item);
-                status = new GameStatus(false, status.getId(), character.toString(), "", "", new AdventureState(), character.getCommandOptions());
+                status = new GameStatus(false, status.getId(), character.toString(), status.getImageUrl(), status.getVideoUrl(), new AdventureState(character.getLevelOfForce(), character.getTotalWorthOfItem()), character.getCommandOptions());
                 return;
             }
         }
@@ -108,10 +110,14 @@ public class AdventureGameInServer {
                     if (direction.getRoom().equalsIgnoreCase(room.getName())) {
                         if (character.getLevelOfForce() >= room.getLevelOfDanger()) {
                             character.setCurrentRoom(room);
-                            status = new GameStatus(false, status.getId(), character.toString(), character.getCurrentRoom().getPhotoURL(), "", new AdventureState(), character.getCommandOptions());
+                            status = new GameStatus(false, status.getId(), character.toString(),
+                                    character.getCurrentRoom().getImageURL(), "",
+                                    new AdventureState(character.getLevelOfForce(), character.getTotalWorthOfItem()),
+                                    character.getCommandOptions());
                             return false;
                         } else {
                             status = MessagePrinter.printLevelTooLow(status, command);
+                            return false;
                         }
                     }
                 }
@@ -122,10 +128,18 @@ public class AdventureGameInServer {
         MessagePrinter.printNoDirection(status, command);
         return false;
     }
+
+    public void checkWorth() {
+        status.setMessage("Your current worth of inventory is: " + character.getTotalWorthOfItem() + "\n" + character.toString());
+    }
+
+    public void checkLoad() {
+        status.setMessage("Your current load is: " + character.getCurrentLoad() + "\n" + character.toString());
+    }
     
     public boolean isGameOver(String command) {
-        return command.trim().equalsIgnoreCase("log in to zoom") &&
-                character.getCurrentRoom().getName().equalsIgnoreCase("Your Room");
+        return command.trim().equalsIgnoreCase("Fight the dragon") &&
+                character.getCurrentRoom().getName().equalsIgnoreCase("Nest of the Dragon");
     }
 
     public void sayDoNotUnderstand(String command) {

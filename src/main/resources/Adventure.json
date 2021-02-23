@@ -4,13 +4,15 @@
   "rooms": [
     {
       "name": "Long Lake Town",
-      "description": "You are at the Long Lake Town, the starting point of your adventure. You might want to take a sword with you to defend the danger. ",
+      "description": "You are at the Long Lake Town, the starting point of your adventure. You might want to take a sword with you to defend the danger. \nLately a dragon from the west are harassing the town. You, the warrior, suggested to go slay the dragon. Good luck on your adventure!",
+      "imageURL": "https://static.wikia.nocookie.net/lotr/images/a/ac/LakeTown.jpg/revision/latest/scale-to-width-down/1000?cb=20150308165514",
       "levelOfDanger": 0,
       "items": [
         {
           "itemName": "Wooden Sword",
           "levelOfForce": 25,
-          "load": 10
+          "load": 40,
+          "worth": 5
         }
       ],
       "directions": [
@@ -24,12 +26,12 @@
       "name": "Forest of Mist",
       "description": "You are in the Forest of Mist. You explored this place. Found nothing but a crystal bottle with some unknown potion inside. ",
       "levelOfDanger": 15,
-      "photoURL": "https://www.google.com/url?sa=i&url=https%3A%2F%2Feu.lumas.com%2Fpictures%2Fdavid_baker%2Fnew_forest_mist%2F&psig=AOvVaw0JQfRMD0HO7SubZgqIBtpU&ust=1614187983517000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCl-IPFgO8CFQAAAAAdAAAAABAD",
+      "imageURL": "http://www.khoras.net/Khoras/Planet/Forests/Mist%20Forest/MistForest.jpg",
       "items": [{
         "itemName": "crystal bottle",
         "levelOfForce": 0,
         "load": 2,
-        "worth": 15
+        "worth": 1000
       }],
       "directions": [
         {
@@ -38,11 +40,11 @@
         },
         {
           "directionName": "West",
-          "room": "Gate of the Morets"
+          "room": "Gate of Morets"
         },
         {
           "directionName": "North",
-          "room": "The Great Waterfall"
+          "room": "The Waterfall"
         },
         {
           "directionName": "Northwest",
@@ -51,13 +53,14 @@
       ]
     },
     {
-      "name": "Gate of the Morets",
-      "description": "You are in the Gate of the Morets. This is one of the battlefields of some ancient wars. Look carefully for things you can bring in your adventure!",
+      "name": "Gate of Morets",
+      "description": "You are in the Gate of Morets. This is one of the battlefields of some ancient wars. Look carefully for things you can bring in your adventure!",
+      "imageURL": "https://lotro-wiki.com/images/thumb/0/0b/Hollin_Gate-1.jpg/400px-Hollin_Gate-1.jpg",
       "levelOfDanger": 25,
       "items": [{
         "itemName": "Ancient Armor",
-        "levelOfForce": 20,
-        "load": 20,
+        "levelOfForce": 50,
+        "load": 40,
         "worth": 1000
       }],
       "directions": [
@@ -77,8 +80,8 @@
       "levelOfDanger": 40,
       "items": [{
         "itemName": "Golden Sword",
-        "levelOfForce": 40,
-        "load": 30,
+        "levelOfForce": 60,
+        "load": 40,
         "worth": 400
       }],
       "directions": [
@@ -88,7 +91,15 @@
         },
         {
           "directionName": "Out",
-          "room": "Gate of the Morets"
+          "room": "Gate of Morets"
+        },
+        {
+          "directionName": "North",
+          "room": "Hall of Morets"
+        },
+        {
+          "directionName": "South",
+          "room": "Storage Room"
         }
       ]
     },
@@ -97,16 +108,135 @@
       "description": "You are in the Deeper mines of the Dwarfs. Danger! Danger!",
       "levelOfDanger": 100,
       "items": [{
-
+        "itemName": "Silver Sword",
+        "levelOfForce": 40,
+        "load": 40,
+        "worth": 400
       }],
       "directions": [
         {
           "directionName": "Down",
-          "room": "Deeper mines"
+          "room": "Nest of the Dragon"
         },
         {
           "directionName": "Out",
-          "room": "Gate of the Morets"
+          "room": "Gate of Morets"
+        }
+      ]
+    },
+    {
+      "name": "Hall of Morets",
+      "description": "You are in the Hall of Morets. Right in the middle hung a silver helmet. You heard from ancient tales that dwarfs' helmet brings you bravery. ",
+      "levelOfDanger": 15,
+      "imageURL": "https://upload.wikimedia.org/wikipedia/en/3/3f/Dwarrodelf.jpg",
+      "items": [{
+        "itemName": "Silver Helmet",
+        "levelOfForce": 50,
+        "load": 15,
+        "worth": 100
+      }],
+      "directions": [
+        {
+          "directionName": "South",
+          "room": "Mine of the Dwarfs"
+        }
+      ]
+    },
+    {
+      "name": "Ravendell",
+      "description": "You are in Ravendell, a place where elves live. The place is magical and bring you wisdom. ",
+      "levelOfDanger": 10,
+      "imageURL": "https://static.wikia.nocookie.net/lotr/images/d/d8/614690.jpg/revision/latest/scale-to-width-down/1000?cb=20180501204919",
+      "items": [{
+        "itemName": "Neckless of Wisdom",
+        "levelOfForce": 10,
+        "load": 5,
+        "worth": 300
+      }],
+      "directions": [
+        {
+          "directionName": "SouthEast",
+          "room": "Forest of Mist"
+        },
+        {
+          "directionName": "East",
+          "room": "The Waterfall"
+        },
+        {
+          "directionName": "Southeast",
+          "room": "Gate of Moret"
+        }
+      ]
+    },
+    {
+      "name": "The Waterfall",
+      "description": "You are at the waterfall. This is the edge of the world. It seems you cannot go any farther. ",
+      "levelOfDanger": 10,
+      "imageURL": "https://cdn.lifestyleasia.com/wp-content/uploads/2018/02/14133112/Kilt-Rock.jpg",
+      "items": [{
+        "itemName": "Rose",
+        "levelOfForce": 5,
+        "load": 1,
+        "worth": 15
+      }],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "Ravendell"
+        },
+        {
+          "directionName": "South",
+          "room": "Forest of Mist"
+        }
+      ]
+    },
+    {
+      "name": "Storage Room",
+      "description": "You are at the storage room of the mine. There are countless treasures in the room. Find the ones you need the most for your adventure. ",
+      "levelOfDanger": 50,
+      "imageURL": "https://static.wikia.nocookie.net/hearthstone_gamepedia/images/3/3c/Trapped_Room_full.jpg/revision/latest/scale-to-width-down/800?cb=20200523163025",
+      "items": [
+        {
+        "itemName": "Gold",
+        "levelOfForce": 0,
+        "load": 40,
+        "worth": 1000
+        },
+        {
+          "itemName": "Fine Steel Leg armor",
+          "levelOfForce": 50,
+          "load": 20,
+          "worth": 200
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "North",
+          "room": "Mine of the Dwarfs"
+        }
+      ]
+    },
+    {
+      "name": "Nest of the Dragon",
+      "description": "You are at the Nest of the Dragon. Right in front of you sleeps a giant dragon. You may want to fight him and get the treasure he has. ",
+      "levelOfDanger": 150,
+      "imageURL": "http://globe-views.com/dcim/dreams/dragon/dragon-04.jpg",
+      "items": [
+        {
+          "itemName": "Luck",
+          "levelOfForce": 0,
+          "load": 0,
+          "worth": 0
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "Fight the dragon",
+          "room": "Victory!"
+        },
+        {
+          "directionName": "Quietly slip back",
+          "room": "Deeper mines"
         }
       ]
     }

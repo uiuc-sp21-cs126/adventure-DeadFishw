@@ -11,7 +11,7 @@ public class Room {
     private Direction[] directions;
     private List<Item> items;
     private int levelOfDanger;
-    private String photoURL;
+    private String imageURL;
 
 
     public Room(){}
@@ -20,12 +20,12 @@ public class Room {
         name = setName;
     }
 
-    public String getPhotoURL() {
-        return photoURL;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
+    public void setImageURL(String photoURL) {
+        this.imageURL = photoURL;
     }
 
     public Direction[] getDirections() {

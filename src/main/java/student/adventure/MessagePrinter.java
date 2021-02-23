@@ -2,27 +2,30 @@ package student.adventure;
 
 import student.server.GameStatus;
 
+import java.util.HashMap;
+
 public class MessagePrinter {
     public static GameStatus printNoDirection(GameStatus status, String direction) {
         return new GameStatus(false, status.getId(), "I can't go \"" +
                 direction.trim().toLowerCase() +
-                "\"!", "","", status.getState(), status.getCommandOptions());
+                "\"!", status.getImageUrl(),status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 
     public static GameStatus printTooMuchLoad(GameStatus status, String item) {
         return new GameStatus(false, status.getId(), "I can't take \"" +
                 item.trim().toLowerCase() +
-                "\"! It's too heavy for me!", "","", status.getState(), status.getCommandOptions());
+                "\"! It's too heavy for me!", status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 
     public static GameStatus printWinMessage(GameStatus status) {
-        return new GameStatus(false, status.getId(),  "Congratulations! You have slained the dragon",
-                status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
+        return new GameStatus(false, status.getId(),  "Congratulations! You have slayed the dragon! You are the hero of the town!",
+                "https://swordoficastrastories.files.wordpress.com/2014/11/dragon6_by_benflores-d84ju1c.jpg?w=580&h=580&crop=1",
+                status.getVideoUrl(), status.getState(), new HashMap<>());
     }
 
     public static GameStatus printLoseMessage(GameStatus status) {
         return new GameStatus(false, status.getId(),  "You meet your own death. Try challenge the dragon with more force next time.",
-                status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
+                status.getImageUrl(), status.getVideoUrl(), status.getState(), new HashMap<>());
     }
 
     public static GameStatus printCannotTake(GameStatus status, String item) {

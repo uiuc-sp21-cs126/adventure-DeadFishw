@@ -13,15 +13,25 @@ public class Character {
     private Layout layout;
     private List<Item> items;
     private int levelOfForce;
-    private int load;
+    private int maximumLoad;
     private int totalWorthOfItem;
 
+    public int getCurrentLoad() {
+        if (items.size() == 0) {
+            return 0;
+        }
+        int currentLoad = 0;
+        for (Item item: items) {
+            currentLoad += item.getLoad();
+        }
+        return currentLoad;
+    }
 
     public Character(Layout setLayout) {
         layout = setLayout;
         currentRoom = setLayout.getRooms()[0];
         items = new ArrayList<>();
-        load = 80;
+        maximumLoad = 180;
     }
 
     public int getTotalWorthOfItem() {
@@ -32,12 +42,12 @@ public class Character {
         this.totalWorthOfItem = totalWorthOfItem;
     }
 
-    public int getLoad() {
-        return load;
+    public int getMaximumLoad() {
+        return maximumLoad;
     }
 
     public void setLoad(int load) {
-        this.load = load;
+        this.maximumLoad = load;
     }
 
     public int getLevelOfForce() {
@@ -116,7 +126,11 @@ public class Character {
      */
     public Map<String, List<String>> getCommandOptions() {
         Map<String, List<String>> commandOptions =  new HashMap<>();
-        commandOptions.put("examine", new ArrayList<>());
+        List emptyStringList = new ArrayList<String>();
+        emptyStringList.add("");
+        commandOptions.put("examine", emptyStringList);
+        commandOptions.put("checkLoad", emptyStringList);
+        commandOptions.put("checkWorth", emptyStringList);
         if (currentRoom.getDirections().length > 0) {
             commandOptions.put("go", currentRoom.getDirectionStrings());
         }

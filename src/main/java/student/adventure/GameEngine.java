@@ -87,7 +87,7 @@ public class GameEngine implements AdventureService {
         }
         games.put(id, new AdventureGameInServer(character,
                 new GameStatus(false, id, character.toString(),
-                        "", "", new AdventureState(), character.getCommandOptions()),
+                        character.getCurrentRoom().getImageURL(), "", new AdventureState(), character.getCommandOptions()),
                 layout));
         return id;
     }
@@ -120,6 +120,10 @@ public class GameEngine implements AdventureService {
             game.take(command.getCommandValue());
         } else if (command.getCommandName().trim().equalsIgnoreCase("drop")) {
             game.drop(command.getCommandValue());
+        } else if (command.getCommandName().trim().equalsIgnoreCase("checkLoad")) {
+            game.checkLoad();
+        } else if (command.getCommandName().trim().equalsIgnoreCase("checkWorth")) {
+            game.checkWorth();
         } else {
             game.sayDoNotUnderstand(command.getCommandName() + " " + command.getCommandValue());
         }

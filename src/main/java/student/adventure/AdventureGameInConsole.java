@@ -33,7 +33,7 @@ public class AdventureGameInConsole {
         }
         for (Item item: character.getCurrentRoom().getItems()) {
             if (item.getItemName().equalsIgnoreCase(itemToTake.trim())) {
-                if (character.getLoad() - item.getLoad() < 0) {
+                if (character.getCurrentLoad() + item.getLoad() > character.getMaximumLoad()) {
                     System.out.println("I can't take \"" +
                             item.toString().trim().toLowerCase() +
                             "\"! It's too heavy for me!");
