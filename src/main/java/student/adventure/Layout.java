@@ -6,23 +6,23 @@ package student.adventure;
 public class Layout {
     private String startingRoom;
     private String endingRoom;
-    private room[] rooms;
+    private Room[] Rooms;
 
 
     public void setEndingRoom(String endingRoom) {
         this.endingRoom = endingRoom;
     }
 
-    public void setRooms(room[] rooms) {
-        this.rooms = rooms;
+    public void setRooms(Room[] Rooms) {
+        this.Rooms = Rooms;
     }
 
     public void setStartingRoom(String startingRoom) {
         this.startingRoom = startingRoom;
     }
 
-    public room[] getRooms() {
-        return rooms;
+    public Room[] getRooms() {
+        return Rooms;
     }
 
     public String getEndingRoom() {

@@ -5,7 +5,7 @@ package student.adventure;
  */
 public class Direction {
     private String directionName;
-    //room to be in if heading to that direction.
+    //Room to be in if heading to that direction.
     private String room;
 
     public Direction() {

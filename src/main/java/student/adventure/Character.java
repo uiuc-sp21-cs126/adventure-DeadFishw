@@ -9,7 +9,7 @@ import java.util.Map;
  * The character to go on to the adventure.
  */
 public class Character {
-    private room currentRoom;
+    private Room currentRoom;
     private Layout layout;
     private List<Item> items;
     private int levelOfForce;
@@ -54,11 +54,11 @@ public class Character {
         return layout;
     }
 
-    public room getCurrentRoom() {
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(room currentRoom) {
+    public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
 

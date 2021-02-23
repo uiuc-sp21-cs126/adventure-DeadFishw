@@ -3,12 +3,12 @@ package student.adventure;
 import com.sun.istack.internal.NotNull;
 import student.server.GameStatus;
 
-public class AdventureGame {
+public class AdventureGameInServer {
     Character character;
     GameStatus status;
     Layout map;
 
-    public AdventureGame(Character character, GameStatus gameStatus, Layout map) {
+    public AdventureGameInServer(Character character, GameStatus gameStatus, Layout map) {
         this.character = character;
         this.status = gameStatus;
         this.map = map;
@@ -35,7 +35,7 @@ public class AdventureGame {
     }
 
     /**
-     * Taking the items in the room
+     * Taking the items in the Room
      *
      * @param command the command to take item("take xxx")
      */
@@ -58,7 +58,7 @@ public class AdventureGame {
     }
 
     /**
-     * Dropping the character.getItems() in the room
+     * Dropping the character.getItems() in the Room
      *
      * @param command the command to drop item("drop xxx")
      */
@@ -90,7 +90,7 @@ public class AdventureGame {
         }
         for (Direction direction: character.getCurrentRoom().getDirections()) {
             if (command.trim().equalsIgnoreCase(direction.getDirectionName())) {
-                for (room room : map.getRooms()) {
+                for (Room room : map.getRooms()) {
                     if (direction.getRoom().equalsIgnoreCase(room.getName())) {
                         if (character.getLevelOfForce() >= room.getLevelOfDanger()) {
                             character.setCurrentRoom(room);
@@ -110,7 +110,7 @@ public class AdventureGame {
     
     public boolean checkWin(String command) {
         return command.trim().equalsIgnoreCase("log in to zoom") &&
-                character.getCurrentRoom().getName().equalsIgnoreCase("Your room");
+                character.getCurrentRoom().getName().equalsIgnoreCase("Your Room");
     }
 
     public void sayDoNotUnderstand(String command) {

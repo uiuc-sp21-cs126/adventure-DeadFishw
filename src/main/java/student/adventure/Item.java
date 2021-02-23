@@ -40,4 +40,9 @@ public class Item {
 
         return Objects.equals(itemName, item.itemName);
     }
+
+    @Override
+    public String toString() {
+        return itemName;
+    }
 }

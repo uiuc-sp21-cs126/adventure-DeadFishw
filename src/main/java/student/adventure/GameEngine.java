@@ -3,14 +3,14 @@ package student.adventure;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import student.server.*;
 
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 public class GameEngine implements AdventureService {
     Layout layout;
-    Map<Integer, AdventureGame> games;
+    Map<Integer, AdventureGameInServer> games;
+    AdventureGameInConsole consoleGame;
 
 
     public GameEngine() throws IOException {
@@ -38,24 +38,38 @@ public class GameEngine implements AdventureService {
 
 
     /**
-     * Act according to the command taken.
-     *  @param command The command to check
-     * @param game
+     * Method to run mid-game. Take in commands and do the actions.
+     *
+     * @param character the current character in the game
      */
-    public static void actAccordingToCommand(Command command, AdventureGame game) {
-        if (command.getCommandValue().equalsIgnoreCase("go")) {
-            if (game.goSomewhere(command.getCommandValue())) {
-                return;
-            }
-        } else if (command.getCommandName().trim().equalsIgnoreCase("examine")) {
-            System.out.println(game.getCharacter());
-        } else if (command.getCommandName().trim().equalsIgnoreCase("take")) {
-            game.take(command.getCommandValue());
-        } else if (command.getCommandName().trim().equalsIgnoreCase("drop")) {
-            game.drop(command.getCommandValue());
+    public void runInConsole(Character character) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(character);
+        String command = scanner.nextLine();
+        if (command.trim().equalsIgnoreCase("quit") ||
+                command.trim().equalsIgnoreCase("exit")) {
+            return;
+        } else if (command.startsWith("go")) {
+            consoleGame.goSomewhere(command);
+        } else if (command.trim().equalsIgnoreCase("examine")) {
+            System.out.println(character);
+        } else if (command.startsWith("take")) {
+            consoleGame.take(command);
+        } else if (command.startsWith("drop")) {
+            consoleGame.drop(command);
         } else {
             System.out.println("I don't understand " + command);
         }
+        runInConsole(character);
+    }
+
+    /**
+     * method to call while starting the game.
+     */
+    public void startInConsole() {
+        Character character = new Character(layout);
+        consoleGame = new AdventureGameInConsole(character,  layout);
+        runInConsole(character);
     }
 
     @Override
@@ -71,7 +85,7 @@ public class GameEngine implements AdventureService {
         while (games.keySet().contains(id)) {
             generater.nextInt(200000);
         }
-        games.put(id, new AdventureGame(character,
+        games.put(id, new AdventureGameInServer(character,
                 new GameStatus(false, id, character.toString(),
                         null, null, new AdventureState(), character.getCommandOptions()),
                 layout));
@@ -97,7 +111,7 @@ public class GameEngine implements AdventureService {
 
     @Override
     public void executeCommand(int id, Command command) {
-        AdventureGame game = games.get(id);
+        AdventureGameInServer game = games.get(id);
         if (command.getCommandName().equalsIgnoreCase("go")) {
             game.goSomewhere(command.getCommandValue());
         } else if (command.getCommandName().trim().equalsIgnoreCase("examine")) {

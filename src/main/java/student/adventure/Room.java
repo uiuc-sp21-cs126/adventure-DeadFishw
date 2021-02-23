@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * The Rooms in the map.
  */
-public class room {
+public class Room {
     private String name;
     private String description;
     private Direction[] directions;
@@ -17,9 +17,9 @@ public class room {
         return commandOptions;
     }
 
-    public room(){}
+    public Room(){}
 
-    public room(String setName) {
+    public Room(String setName) {
         name = setName;
     }
 
@@ -47,7 +47,7 @@ public class room {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        room room = (room) o;
+        Room room = (Room) o;
         return name.equals(room.name);
     }
 
@@ -66,7 +66,7 @@ public class room {
         return itemStrings;
     }
 
-    public void setItems(String[] items) {
+    public void setItems(Item[] items) {
         this.items = new ArrayList(Arrays.asList(items));
     }
 
@@ -74,9 +74,6 @@ public class room {
         items.remove(item.trim().toLowerCase());
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
 
     public void setLevelOfDanger(int levelOfDanger) {
         this.levelOfDanger = levelOfDanger;
