@@ -1,0 +1,117 @@
+{
+  "startingRoom": "Long Lake Town",
+  "endingRoom": "Siebel1314",
+  "rooms": [
+    {
+      "name": "Long Lake Town",
+      "description": "You are at the Long Lake Town, the starting point of your adventure. You might want to take a sword with you to defend the danger. ",
+      "levelOfDanger": 0,
+      "items": [
+        {
+          "itemName": "Wood Sword",
+          "levelOfForce": 20,
+          "load": 10
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "Forest of Mist"
+        }
+      ]
+    },
+    {
+      "name": "Forest of Mist",
+      "description": "You are in the Forest of Mist. You explored this place. Found nothing but a crystal bottle with some unknown potion inside. ",
+      "levelOfDanger": 15,
+      "items": [{
+        "itemName": "crystal bottle",
+        "levelOfForce": 0,
+        "load": 2,
+        "worth": 15
+      }],
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "Long Lake Town"
+        },
+        {
+          "directionName": "West",
+          "room": "Gate of the Morts"
+        },
+        {
+          "directionName": "North",
+          "room": "The Great Waterfall"
+        },
+        {
+          "directionName": "Northwest",
+          "room": "Ravendell"
+        }
+      ]
+    },
+    {
+      "name": "Gate of the Morets",
+      "description": "You are in the Gate of the Morets. This is one of the battlefields of some ancient wars. Look carefully for things you can bring in your adventure!",
+      "levelOfDanger": 25,
+      "items": [{
+        "itemName": "Ancient Armor",
+        "levelOfForce": 10,
+        "load": 20,
+        "worth": 1000
+      }],
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "Forest of Mist"
+        },
+        {
+          "directionName": "In",
+          "room": "The Mine of the Dwarfs"
+        },
+        {
+          "directionName": "In",
+          "room": "Mine of the Dwarfs"
+        }
+      ]
+    },
+    {
+      "name": "Mine of the Dwarfs",
+      "description": "You are in the Mine of the Dwarfs. Countless of treasures were dug out by the hardworking dwarfs! Look for something you can use for the adventure!",
+      "levelOfDanger": 40,
+      "items": [{
+        "itemName": "Golden Sword",
+        "levelOfForce": 40,
+        "load": 30,
+        "worth": 400
+      }],
+      "directions": [
+        {
+          "directionName": "Down",
+          "room": "Deeper mines"
+        },
+        {
+          "directionName": "Out",
+          "room": "Gate of the Morets"
+        }
+      ]
+    },
+    {
+      "name": "Deeper mines",
+      "description": "You are in the Deeper mines of the Dwarfs. Danger! Danger!",
+      "levelOfDanger": 100,
+      "items": [{
+
+      }],
+      "directions": [
+        {
+          "directionName": "Down",
+          "room": "Deeper mines"
+        },
+        {
+          "directionName": "Out",
+          "room": "Gate of the Morets"
+        }
+      ]
+    }
+  ]
+}
