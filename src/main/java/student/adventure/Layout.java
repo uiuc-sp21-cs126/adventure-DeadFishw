@@ -7,10 +7,15 @@ public class Layout {
     private String startingRoom;
     private String endingRoom;
     private Room[] Rooms;
+    private final static int LEVEL_OF_FORCE_DRAGON = 200;
 
 
     public void setEndingRoom(String endingRoom) {
         this.endingRoom = endingRoom;
+    }
+
+    public static int getLevelOfForceDragon() {
+        return LEVEL_OF_FORCE_DRAGON;
     }
 
     public void setRooms(Room[] Rooms) {

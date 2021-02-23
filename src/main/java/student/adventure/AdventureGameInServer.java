@@ -5,9 +5,9 @@ import student.server.AdventureState;
 import student.server.GameStatus;
 
 public class AdventureGameInServer {
-    Character character;
-    GameStatus status;
-    Layout map;
+    private Character character;
+    private GameStatus status;
+    private Layout map;
 
     public AdventureGameInServer(Character character, GameStatus gameStatus, Layout map) {
         this.character = character;
@@ -53,7 +53,7 @@ public class AdventureGameInServer {
                 character.getItems().add(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() + item.getWorth());
                 character.getCurrentRoom().getItems().remove(item);
-                status = new GameStatus(false, status.getId(), character.toString(), "", "", new AdventureState(), character.getCommandOptions());
+                status = new GameStatus(false, status.getId(), character.toString(), "", "https://www.bilibili.com/video/BV1Vo4y1R7dM", new AdventureState(), character.getCommandOptions());
                 return;
             }
         }
@@ -93,8 +93,13 @@ public class AdventureGameInServer {
      * @return true for game win and false for game continue.
      */
     public boolean goSomewhere(@NotNull String command) {
-        if (checkWin(command)) {
-            status = MessagePrinter.printWinMessage(status);
+        if (isGameOver(command)) {
+            if (character.getLevelOfForce() > map.getLevelOfForceDragon()) {
+                status = MessagePrinter.printWinMessage(status);
+            } else {
+                status = MessagePrinter.printLoseMessage(status);
+            }
+
             return true;
         }
         for (Direction direction: character.getCurrentRoom().getDirections()) {
@@ -118,7 +123,7 @@ public class AdventureGameInServer {
         return false;
     }
     
-    public boolean checkWin(String command) {
+    public boolean isGameOver(String command) {
         return command.trim().equalsIgnoreCase("log in to zoom") &&
                 character.getCurrentRoom().getName().equalsIgnoreCase("Your Room");
     }

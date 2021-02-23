@@ -20,6 +20,11 @@ public class MessagePrinter {
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 
+    public static GameStatus printLoseMessage(GameStatus status) {
+        return new GameStatus(false, status.getId(),  "You meet your own death. Try challenge the dragon with more force next time.",
+                status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
+    }
+
     public static GameStatus printCannotTake(GameStatus status, String item) {
         return new GameStatus(false, status.getId(),  "There is no item \"" + item.trim() + "\" in the Room.",
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
