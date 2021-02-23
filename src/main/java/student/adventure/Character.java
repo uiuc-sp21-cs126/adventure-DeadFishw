@@ -14,6 +14,7 @@ public class Character {
     private List<Item> items;
     private int levelOfForce;
     private int load;
+    private int totalWorthOfItem;
 
 
     public Character(Layout setLayout) {
@@ -21,6 +22,14 @@ public class Character {
         currentRoom = setLayout.getRooms()[0];
         items = new ArrayList<>();
         load = 80;
+    }
+
+    public int getTotalWorthOfItem() {
+        return totalWorthOfItem;
+    }
+
+    public void setTotalWorthOfItem(int totalWorthOfItem) {
+        this.totalWorthOfItem = totalWorthOfItem;
     }
 
     public int getLoad() {

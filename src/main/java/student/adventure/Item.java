@@ -6,6 +6,7 @@ public class Item {
     private String itemName;
     private int levelOfForce;
     private int load;
+    private int worth;
 
     public int getLevelOfForce() {
         return levelOfForce;
@@ -17,6 +18,10 @@ public class Item {
 
     public int getLoad() {
         return load;
+    }
+
+    public void setWorth(int worth) {
+        this.worth = worth;
     }
 
     public void setLoad(int load) {
@@ -39,6 +44,10 @@ public class Item {
         Item item = (Item) o;
 
         return Objects.equals(itemName, item.itemName);
+    }
+
+    public int getWorth() {
+        return worth;
     }
 
     @Override

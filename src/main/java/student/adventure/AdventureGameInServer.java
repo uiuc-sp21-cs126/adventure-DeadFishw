@@ -50,6 +50,7 @@ public class AdventureGameInServer {
                     MessagePrinter.printTooMuchLoad(status,command);
                 }
                 character.getItems().add(item);
+                character.setTotalWorthOfItem(character.getTotalWorthOfItem() + item.getWorth());
                 character.getCurrentRoom().getItems().remove(item);
                 return;
             }
@@ -70,6 +71,7 @@ public class AdventureGameInServer {
         for (Item item: character.getItems()) {
             if (item.getItemName().equalsIgnoreCase(command.trim())) {
                 character.getItems().remove(item);
+                character.setTotalWorthOfItem(character.getTotalWorthOfItem() - item.getWorth());
                 character.getCurrentRoom().getItems().add(item);
                 return;
             }
