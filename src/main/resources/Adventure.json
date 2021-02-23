@@ -24,6 +24,7 @@
       "name": "Forest of Mist",
       "description": "You are in the Forest of Mist. You explored this place. Found nothing but a crystal bottle with some unknown potion inside. ",
       "levelOfDanger": 15,
+      "photoURL": "https://www.google.com/url?sa=i&url=https%3A%2F%2Feu.lumas.com%2Fpictures%2Fdavid_baker%2Fnew_forest_mist%2F&psig=AOvVaw0JQfRMD0HO7SubZgqIBtpU&ust=1614187983517000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCl-IPFgO8CFQAAAAAdAAAAABAD",
       "items": [{
         "itemName": "crystal bottle",
         "levelOfForce": 0,

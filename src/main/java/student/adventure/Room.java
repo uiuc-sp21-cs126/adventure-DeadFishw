@@ -10,17 +10,22 @@ public class Room {
     private String description;
     private Direction[] directions;
     private List<Item> items;
-    private Map<String, List<String>> commandOptions;
     private int levelOfDanger;
+    private String photoURL;
 
-    public Map<String, List<String>> getCommandOptions() {
-        return commandOptions;
-    }
 
     public Room(){}
 
     public Room(String setName) {
         name = setName;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 
     public Direction[] getDirections() {

@@ -74,6 +74,7 @@ public class AdventureGameInServer {
             if (item.getItemName().equalsIgnoreCase(command.trim())) {
                 if (character.getLevelOfForce() - item.getLevelOfForce() < character.getCurrentRoom().getLevelOfDanger()) {
                     status = MessagePrinter.printLevelTooLowToDrop(status, command);
+                    return;
                 }
                 character.getItems().remove(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() - item.getWorth());
@@ -102,7 +103,7 @@ public class AdventureGameInServer {
                     if (direction.getRoom().equalsIgnoreCase(room.getName())) {
                         if (character.getLevelOfForce() >= room.getLevelOfDanger()) {
                             character.setCurrentRoom(room);
-                            status = new GameStatus(false, status.getId(), character.toString(), "", "", new AdventureState(), character.getCommandOptions());
+                            status = new GameStatus(false, status.getId(), character.toString(), character.getCurrentRoom().getPhotoURL(), "", new AdventureState(), character.getCommandOptions());
                             return false;
                         } else {
                             status = MessagePrinter.printLevelTooLow(status, command);
