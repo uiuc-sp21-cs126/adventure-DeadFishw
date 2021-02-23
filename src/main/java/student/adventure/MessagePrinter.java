@@ -6,13 +6,13 @@ public class MessagePrinter {
     public static GameStatus printNoDirection(GameStatus status, String direction) {
         return new GameStatus(true, status.getId(), "I can't go \"" +
                 direction.trim().toLowerCase() +
-                "\"!", null,null, status.getState(), status.getCommandOptions());
+                "\"!", "","", status.getState(), status.getCommandOptions());
     }
 
     public static GameStatus printTooMuchLoad(GameStatus status, String item) {
         return new GameStatus(true, status.getId(), "I can't take \"" +
                 item.trim().toLowerCase() +
-                "\"! It's too heavy for me!", null,null, status.getState(), status.getCommandOptions());
+                "\"! It's too heavy for me!", "","", status.getState(), status.getCommandOptions());
     }
 
     public static GameStatus printWinMessage(GameStatus status) {

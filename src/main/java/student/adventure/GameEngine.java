@@ -87,17 +87,17 @@ public class GameEngine implements AdventureService {
         }
         games.put(id, new AdventureGameInServer(character,
                 new GameStatus(false, id, character.toString(),
-                        null, null, new AdventureState(), character.getCommandOptions()),
+                        "", "", new AdventureState(), character.getCommandOptions()),
                 layout));
         return id;
     }
 
     @Override
     public GameStatus getGame(int id) {
-        if (id < 1 || id > games.size()) {
-            throw new IllegalArgumentException();
+        if (games.keySet().contains(id)) {
+            return games.get(id).getGameStatus();
         }
-        return games.get(id).getGameStatus();
+        return null;
     }
 
     @Override

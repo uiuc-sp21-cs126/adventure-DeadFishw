@@ -1,6 +1,7 @@
 package student.adventure;
 
 import com.sun.istack.internal.NotNull;
+import student.server.AdventureState;
 import student.server.GameStatus;
 
 public class AdventureGameInServer {
@@ -52,6 +53,7 @@ public class AdventureGameInServer {
                 character.getItems().add(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() + item.getWorth());
                 character.getCurrentRoom().getItems().remove(item);
+                status = new GameStatus(false, status.getId(), character.toString(), "", "", new AdventureState(), character.getCommandOptions());
                 return;
             }
         }
@@ -76,6 +78,7 @@ public class AdventureGameInServer {
                 character.getItems().remove(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() - item.getWorth());
                 character.getCurrentRoom().getItems().add(item);
+                status = new GameStatus(false, status.getId(), character.toString(), "", "", new AdventureState(), character.getCommandOptions());
                 return;
             }
         }
@@ -99,6 +102,7 @@ public class AdventureGameInServer {
                     if (direction.getRoom().equalsIgnoreCase(room.getName())) {
                         if (character.getLevelOfForce() >= room.getLevelOfDanger()) {
                             character.setCurrentRoom(room);
+                            status = new GameStatus(false, status.getId(), character.toString(), "", "", new AdventureState(), character.getCommandOptions());
                             return false;
                         } else {
                             status = MessagePrinter.printLevelTooLow(status, command);

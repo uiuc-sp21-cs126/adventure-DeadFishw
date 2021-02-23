@@ -117,10 +117,15 @@ public class Character {
     public Map<String, List<String>> getCommandOptions() {
         Map<String, List<String>> commandOptions =  new HashMap<>();
         commandOptions.put("examine", new ArrayList<>());
-        commandOptions.put("go", currentRoom.getDirectionStrings());
-        commandOptions.put("take", currentRoom.getItemsString());
-        commandOptions.put("drop", this.getItemsString());
-        List<String> toAdd = new ArrayList<String>();
+        if (currentRoom.getDirections().length > 0) {
+            commandOptions.put("go", currentRoom.getDirectionStrings());
+        }
+        if (currentRoom.getItems().size() > 0) {
+            commandOptions.put("take", currentRoom.getItemsString());
+        }
+        if (this.getItems().size() > 0) {
+            commandOptions.put("drop", this.getItemsString());
+        }
         return commandOptions;
     }
 
