@@ -25,8 +25,13 @@ public class MessagePrinter {
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 
-    public static GameStatus printCannotDrop(GameStatus status, String item) {
+    public static GameStatus printDoNotHaveItemDrop(GameStatus status, String item) {
         return new GameStatus(true, status.getId(),  "You don't have \"" + item.trim() + "\"!",
+                status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
+    }
+
+    public static GameStatus printLevelTooLowToDrop(GameStatus status, String item) {
+        return new GameStatus(true, status.getId(),  "You cannot drop \"" + item.trim() + "\"! You cannot protect yourself here!",
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 
@@ -38,7 +43,7 @@ public class MessagePrinter {
     public static GameStatus printLevelTooLow(GameStatus status, String direction) {
         return new GameStatus(true, status.getId(),  "I can't go \"" +
                 direction.trim().toLowerCase() +
-                "\"! Your level of force is too low! DANGER!",
+                "\"! I cannot protect myself there!",
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 }

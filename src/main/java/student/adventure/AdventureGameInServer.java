@@ -65,18 +65,21 @@ public class AdventureGameInServer {
      */
     public void drop(@NotNull String command) {
         if (character.getCurrentRoom().getItems() == null) {
-            status = MessagePrinter.printCannotDrop(status, command);
+            status = MessagePrinter.printDoNotHaveItemDrop(status, command);
             return;
         }
         for (Item item: character.getItems()) {
             if (item.getItemName().equalsIgnoreCase(command.trim())) {
+                if (character.getLevelOfForce() - item.getLevelOfForce() < character.getCurrentRoom().getLevelOfDanger()) {
+                    status = MessagePrinter.printLevelTooLowToDrop(status, command);
+                }
                 character.getItems().remove(item);
                 character.setTotalWorthOfItem(character.getTotalWorthOfItem() - item.getWorth());
                 character.getCurrentRoom().getItems().add(item);
                 return;
             }
         }
-        status = MessagePrinter.printCannotDrop(status, command);
+        status = MessagePrinter.printDoNotHaveItemDrop(status, command);
     }
 
     /**

@@ -60,7 +60,10 @@ public class AdventureGameInConsole {
             return;
         }
         for (Item item: character.getItems()) {
-            if (item.getItemName().equalsIgnoreCase(command.trim())) {
+            if (item.getItemName().equalsIgnoreCase(itemToDrop.trim())) {
+                if (character.getLevelOfForce() - item.getLevelOfForce() < character.getCurrentRoom().getLevelOfDanger()) {
+                    System.out.println("You cannot drop \"" + item.toString().trim() + "\"! You cannot protect yourself here!");
+                }
                 character.getItems().remove(item);
                 character.getCurrentRoom().getItems().add(item);
                 return;
@@ -92,7 +95,7 @@ public class AdventureGameInConsole {
                         } else {
                             System.out.println("I can't go \"" +
                                     directionToGo.trim().toLowerCase() +
-                                    "\"!");
+                                    "\"! I cannot protect myself there!");
                         }
                     }
                 }
