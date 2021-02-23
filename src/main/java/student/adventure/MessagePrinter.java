@@ -9,6 +9,12 @@ public class MessagePrinter {
                 "\"!", null,null, status.getState(), status.getCommandOptions());
     }
 
+    public static GameStatus printTooMuchLoad(GameStatus status, String item) {
+        return new GameStatus(true, status.getId(), "I can't take \"" +
+                item.trim().toLowerCase() +
+                "\"! It's too heavy for me!", null,null, status.getState(), status.getCommandOptions());
+    }
+
     public static GameStatus printWinMessage(GameStatus status) {
         return new GameStatus(false, status.getId(),  "Congratulations! You have slained the dragon",
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());

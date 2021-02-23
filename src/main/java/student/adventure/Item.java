@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Item {
     private String itemName;
     private int levelOfForce;
+    private int load;
 
     public int getLevelOfForce() {
         return levelOfForce;
@@ -12,6 +13,14 @@ public class Item {
 
     public String getItemName() {
         return itemName;
+    }
+
+    public int getLoad() {
+        return load;
+    }
+
+    public void setLoad(int load) {
+        this.load = load;
     }
 
     public void levelOfForce(int levelOfForce) {

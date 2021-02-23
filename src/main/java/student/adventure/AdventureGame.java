@@ -46,6 +46,9 @@ public class AdventureGame {
         }
         for (Item item: character.getCurrentRoom().getItems()) {
             if (item.getItemName().equalsIgnoreCase(command.trim())) {
+                if (character.getLoad() - item.getLoad() < 0) {
+                    MessagePrinter.printTooMuchLoad(status,command);
+                }
                 character.getItems().add(item);
                 character.getCurrentRoom().getItems().remove(item);
                 return;
