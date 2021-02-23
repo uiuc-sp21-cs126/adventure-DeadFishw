@@ -9,7 +9,7 @@
       "items": [
         {
           "itemName": "Wood Sword",
-          "levelOfForce": 20,
+          "levelOfForce": 25,
           "load": 10
         }
       ],
@@ -37,7 +37,7 @@
         },
         {
           "directionName": "West",
-          "room": "Gate of the Morts"
+          "room": "Gate of the Morets"
         },
         {
           "directionName": "North",
@@ -55,7 +55,7 @@
       "levelOfDanger": 25,
       "items": [{
         "itemName": "Ancient Armor",
-        "levelOfForce": 10,
+        "levelOfForce": 20,
         "load": 20,
         "worth": 1000
       }],
@@ -63,10 +63,6 @@
         {
           "directionName": "East",
           "room": "Forest of Mist"
-        },
-        {
-          "directionName": "In",
-          "room": "The Mine of the Dwarfs"
         },
         {
           "directionName": "In",
