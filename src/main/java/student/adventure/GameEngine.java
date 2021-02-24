@@ -15,6 +15,10 @@ public class GameEngine implements AdventureService {
     Map<Integer, AdventureGameInServer> games;
     AdventureGameInConsole consoleGame;
 
+    public AdventureGameInServer getGameInServer(int id) {
+        return games.getOrDefault(id, null);
+    }
+
     public AdventureGameInConsole getConsoleGame() {
         return consoleGame;
     }
@@ -57,6 +61,7 @@ public class GameEngine implements AdventureService {
                 command.trim().equalsIgnoreCase("exit")) {
             return;
         } else if (command.startsWith("go ")) {
+            System.out.println(123);
             if (consoleGame.goSomewhere(command)) {
                 return;
             }

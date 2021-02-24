@@ -29,7 +29,7 @@ public class MessagePrinter {
     }
 
     public static GameStatus printCannotTake(GameStatus status, String item) {
-        return new GameStatus(false, status.getId(),  "There is no item \"" + item.trim() + "\" in the Room.",
+        return new GameStatus(false, status.getId(),  "There is no item \"" + item.trim() + "\" in the room.",
                 status.getImageUrl(), status.getVideoUrl(), status.getState(), status.getCommandOptions());
     }
 

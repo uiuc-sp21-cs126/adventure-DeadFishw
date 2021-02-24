@@ -18,6 +18,7 @@ public class AdventureGameInServer {
         this.map = map;
     }
 
+
     public Character getCharacter() {
         return character;
     }
@@ -127,7 +128,7 @@ public class AdventureGameInServer {
             }
         }
 
-        MessagePrinter.printNoDirection(status, command);
+        status = MessagePrinter.printNoDirection(status, command);
         return false;
     }
 
