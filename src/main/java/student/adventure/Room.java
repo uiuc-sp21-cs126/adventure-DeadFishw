@@ -71,6 +71,7 @@ public class Room {
         return itemStrings;
     }
 
+
     public void setItems(Item[] items) {
         this.items = new ArrayList(Arrays.asList(items));
     }

@@ -2,6 +2,9 @@ package student.adventure;
 
 import java.util.Objects;
 
+/**
+ * The Item in the games.
+ */
 public class Item {
     private String itemName;
     private int levelOfForce;
@@ -18,6 +21,16 @@ public class Item {
 
     public int getLoad() {
         return load;
+    }
+
+    public Item(String setName, int setForce, int setLoad, int setWorth) {
+        itemName = setName;
+        levelOfForce = setForce;
+        load = setLoad;
+        worth = setWorth;
+    }
+
+    public Item() {
     }
 
     public void setWorth(int worth) {

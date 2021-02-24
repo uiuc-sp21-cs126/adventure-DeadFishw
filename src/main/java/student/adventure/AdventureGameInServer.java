@@ -4,6 +4,9 @@ import com.sun.istack.internal.NotNull;
 import student.server.AdventureState;
 import student.server.GameStatus;
 
+/**
+ * AdventureGame instance for playing in the server
+ */
 public class AdventureGameInServer {
     private Character character;
     private GameStatus status;
@@ -48,7 +51,6 @@ public class AdventureGameInServer {
         for (Item item: character.getCurrentRoom().getItems()) {
             if (item.getItemName().equalsIgnoreCase(command.trim())) {
                 if (character.getCurrentLoad() + item.getLoad() > character.getMaximumLoad()) {
-                    System.out.println("1");
                     status = MessagePrinter.printTooMuchLoad(status,command);
                     return;
                 }
@@ -68,7 +70,7 @@ public class AdventureGameInServer {
      * @param command the command to drop item("drop xxx")
      */
     public void drop(@NotNull String command) {
-        if (character.getCurrentRoom().getItems() == null) {
+        if (character.getItems() == null) {
             status = MessagePrinter.printDoNotHaveItemDrop(status, command);
             return;
         }
@@ -129,19 +131,33 @@ public class AdventureGameInServer {
         return false;
     }
 
+    /**
+     * Send the current worth of inventory to the server.
+     */
     public void checkWorth() {
         status.setMessage("Your current worth of inventory is: " + character.getTotalWorthOfItem() + "\n" + character.toString());
     }
-
+    /**
+     * Send the current load to the server.
+     */
     public void checkLoad() {
         status.setMessage("Your current load is: " + character.getCurrentLoad() + "\n" + character.toString());
     }
-    
+
+    /**
+     * Check if the game is over (win or lose)
+     * @param command the command to take
+     * @return true for over
+     */
     public boolean isGameOver(String command) {
         return command.trim().equalsIgnoreCase("Fight the dragon") &&
                 character.getCurrentRoom().getName().equalsIgnoreCase("Nest of the Dragon");
     }
 
+    /**
+     * send the message that the command is not understood.
+     * @param command the command that the engine does not understand
+     */
     public void sayDoNotUnderstand(String command) {
         status = MessagePrinter.printDoNotUnderstand(status, command);
     }

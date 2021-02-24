@@ -7,11 +7,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * The game engine for starting and running the games. Save the game instances.
+ */
 public class GameEngine implements AdventureService {
     Layout layout;
     Map<Integer, AdventureGameInServer> games;
     AdventureGameInConsole consoleGame;
 
+    public AdventureGameInConsole getConsoleGame() {
+        return consoleGame;
+    }
 
     public GameEngine() throws IOException {
         File file = new File("src/main/resources/siebel.json");
@@ -23,6 +29,7 @@ public class GameEngine implements AdventureService {
         ObjectMapper mapper = new ObjectMapper();
         layout = mapper.readValue(file, Layout.class);
         games = new HashMap<>();
+        consoleGame = new AdventureGameInConsole(new Character(layout), layout);
     }
 
     /**
@@ -32,8 +39,8 @@ public class GameEngine implements AdventureService {
      * @return true for to be continued.
      */
     public static boolean isGameContinued(Command command) {
-        return command.getCommandName().trim().equalsIgnoreCase("quit") ||
-                command.getCommandName().trim().equalsIgnoreCase("exit");
+        return command.getCommandName().trim().equalsIgnoreCase("quit")
+                || command.getCommandName().trim().equalsIgnoreCase("exit");
     }
 
 
@@ -49,13 +56,15 @@ public class GameEngine implements AdventureService {
         if (command.trim().equalsIgnoreCase("quit") ||
                 command.trim().equalsIgnoreCase("exit")) {
             return;
-        } else if (command.startsWith("go")) {
-            consoleGame.goSomewhere(command);
+        } else if (command.startsWith("go ")) {
+            if (consoleGame.goSomewhere(command)) {
+                return;
+            }
         } else if (command.trim().equalsIgnoreCase("examine")) {
             System.out.println(character);
-        } else if (command.startsWith("take")) {
+        } else if (command.startsWith("take ")) {
             consoleGame.take(command);
-        } else if (command.startsWith("drop")) {
+        } else if (command.startsWith("drop ")) {
             consoleGame.drop(command);
         } else {
             System.out.println("I don't understand " + command);
@@ -102,7 +111,7 @@ public class GameEngine implements AdventureService {
 
     @Override
     public boolean destroyGame(int id) {
-        if(games.keySet().contains(id)) {
+        if (games.keySet().contains(id)) {
             games.remove(id);
             return true;
         }
