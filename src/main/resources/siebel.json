@@ -5,6 +5,7 @@
     {
       "name": "MatthewsStreet",
       "description": "You are on Matthews, outside the Siebel Center",
+      "items": ["missing notes"],
       "directions": [
         {
           "directionName": "East",
@@ -15,6 +16,7 @@
     {
       "name": "SiebelEntry",
       "description": "You are in the west entry of Siebel Center. You can see the elevator, the ACM office, and hallways to the north and east.",
+      "items": ["coins"],
       "directions": [
         {
           "directionName": "West",
@@ -37,6 +39,7 @@
     {
       "name": "AcmOffice",
       "description": "You are in the ACM office.  There are lots of friendly ACM people.",
+      "items": ["Mouses"],
       "directions": [
         {
           "directionName": "South",
@@ -47,6 +50,7 @@
     {
       "name": "SiebelNorthHallway",
       "description": "You are in the north hallway.  You can see Siebel 1112 and the door toward NCSA.",
+      "items": ["coins"],
       "directions": [
         {
           "directionName": "South",
@@ -61,6 +65,7 @@
     {
       "name": "Siebel1112",
       "description": "You are in Siebel 1112.  There is space for two code reviews in this room.",
+      "items": ["cars"],
       "directions": [
         {
           "directionName": "West",
@@ -71,6 +76,7 @@
     {
       "name": "SiebelEastHallway",
       "description": "You are in the east hallway.  You can see Einstein Bros' Bagels and a stairway.",
+      "items": ["bagels"],
       "directions": [
         {
           "directionName": "West",
@@ -89,6 +95,7 @@
     {
       "name": "Siebel1314",
       "description": "You are in Siebel 1314.  There are happy CS 126 students doing a code review.",
+      "items": ["knowledge"],
       "directions": [
         {
           "directionName": "North",
@@ -99,10 +106,30 @@
     {
       "name": "SiebelBasement",
       "description": "You are in the basement of Siebel.  You see tables with students working and door to computer labs.",
+      "items": ["books"],
       "directions": [
         {
           "directionName": "Up",
           "room": "SiebelEastHallway"
+        },
+        {
+          "directionName": "In",
+          "room": "Your room"
+        }
+      ]
+    },
+    {
+      "name": "Your room",
+      "description": "You are in your room, ready to log in to zoom and start code review.",
+      "items": ["Laptop"],
+      "directions": [
+        {
+          "directionName": "Out",
+          "room": "SiebelBasement"
+        },
+        {
+          "directionName": "log in to zoom",
+          "room": "Zoom"
         }
       ]
     }

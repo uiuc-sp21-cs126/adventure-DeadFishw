@@ -1,15 +1,27 @@
 package student.server;
 
+import student.adventure.GameEngine;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.File;
+import java.io.IOException;
 
 @Path("/")
 public class AdventureResource {
     /**
      * The single static adventure service instance used for this API.
      */
-    private static AdventureService service; // = new YourAdventureServiceHere();
+    private static AdventureService service;
+
+    static {
+        try {
+            service = new GameEngine(new File("src/main/resources/Adventure.json"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * The API endpoint to test connectivity.
@@ -19,7 +31,7 @@ public class AdventureResource {
     @Path("ping")
     public String ping() {
         // TODO: This method should return `pong`.
-        return "";
+        return "pong";
     }
 
     /**

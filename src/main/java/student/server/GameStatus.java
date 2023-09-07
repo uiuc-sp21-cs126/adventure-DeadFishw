@@ -57,6 +57,10 @@ public class GameStatus {
         this.commandOptions = commandOptions;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public boolean isError() {
         return error;
     }
